@@ -16,8 +16,8 @@ Supabase: Supabase is an open source Firebase alternative for database, storage,
 ```
 
 ### About RAG & embeddings
-https://medium.com/@codeonmars/leveraging-rag-to-deliver-trustworthy-accountable-answers-with-generative-ai-adcf3a476e01
-https://codeonmars.medium.com/what-the-hell-is-embeddings-in-ai-68fb5564eb38
+- https://medium.com/@codeonmars/leveraging-rag-to-deliver-trustworthy-accountable-answers-with-generative-ai-adcf3a476e01
+- https://codeonmars.medium.com/what-the-hell-is-embeddings-in-ai-68fb5564eb38
 
 ### Getting Started
 
