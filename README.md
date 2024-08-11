@@ -1,18 +1,23 @@
 ## Support Docs AI
-
 Harness the Power of Intelligent Search to Uncover Relevant Information from your Documents Instantly
 
-### Demo
+### Demo Recording
 [![Support Docs AI Demo](https://img.youtube.com/vi/Zjk71esceU0/0.jpg)](https://www.youtube.com/watch?v=Zjk71esceU0)
 
 ### Technology Stack
 The application is built using the following technologies:
 
+```
 Next.js : A React framework for building server-rendered and static websites.
 React : A JavaScript library for building user interfaces.
 Tailwind CSS : A utility-first CSS framework for styling.
 Langchain : Is a framework for developing applications powered by large language models (LLMs).
 Supabase: Supabase is an open source Firebase alternative for database, storage, auth etc.
+```
+
+### About RAG & embeddings
+https://medium.com/@codeonmars/leveraging-rag-to-deliver-trustworthy-accountable-answers-with-generative-ai-adcf3a476e01
+https://codeonmars.medium.com/what-the-hell-is-embeddings-in-ai-68fb5564eb38
 
 ### Getting Started
 
@@ -54,7 +59,9 @@ The application requires several environment variables to be set. Here's a table
 Note, you can either use OpenAI or Google gemini key for embeddings and other AI capabilities.
 ```
 
-### Starting the service
+### Running the service
+
+to build the service, run below command
 
 ```bash
 npm run build
