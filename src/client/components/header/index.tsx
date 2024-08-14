@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { FolderDot } from "lucide-react";
