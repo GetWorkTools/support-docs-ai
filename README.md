@@ -1,18 +1,23 @@
 ## Support Docs AI
-
 Harness the Power of Intelligent Search to Uncover Relevant Information from your Documents Instantly
 
-### Demo
+### Demo Recording
 [![Support Docs AI Demo](https://img.youtube.com/vi/Zjk71esceU0/0.jpg)](https://www.youtube.com/watch?v=Zjk71esceU0)
 
 ### Technology Stack
 The application is built using the following technologies:
 
+```
 Next.js : A React framework for building server-rendered and static websites.
 React : A JavaScript library for building user interfaces.
 Tailwind CSS : A utility-first CSS framework for styling.
 Langchain : Is a framework for developing applications powered by large language models (LLMs).
 Supabase: Supabase is an open source Firebase alternative for database, storage, auth etc.
+```
+
+### About RAG & embeddings
+- https://medium.com/@codeonmars/leveraging-rag-to-deliver-trustworthy-accountable-answers-with-generative-ai-adcf3a476e01
+- https://codeonmars.medium.com/what-the-hell-is-embeddings-in-ai-68fb5564eb38
 
 ### Getting Started
 
@@ -54,7 +59,9 @@ The application requires several environment variables to be set. Here's a table
 Note, you can either use OpenAI or Google gemini key for embeddings and other AI capabilities.
 ```
 
-### Starting the service
+### Running the service
+
+to build the service, run below command
 
 ```bash
 npm run build
@@ -98,8 +105,62 @@ src/
 The `/src/client` folder contains the client-side code for the application. This includes React components, hooks, and other client-side utilities. The client-side code is responsible for rendering the user interface and handling user interactions.
 
 #### /src/server Folder
-The `/src/server` folder contains the server-side code for the application. This includes API routes, database interactions, and other server-side logic. The server-side code is responsible for handling requests, fetching data, and performing server-side operations.
+The `/src/server` folder contains the server-side code for the application. This includes database interactions, and other server-side logic.
 
+### Running SQL scripts
+You need to run below sql script in Supabase to create database table & function.
+
+```sql
+-- Enable the pgvector extension to work with embedding vectors
+create extension vector;
+
+-- Create a table to store your documents
+create table documents (
+  id bigserial primary key,
+  content text, -- corresponds to Document.pageContent
+  metadata jsonb, -- corresponds to Document.metadata
+  embedding vector(768) -- 768 works for Googe Gemini embeddings, change if needed
+);
+
+-- Create a table to store user details
+create table users (
+    email character varying not null,
+    name character varying not null,
+    created_at timestamp with time zone not null default now(),
+    uuid uuid not null default gen_random_uuid (),
+    constraint users_pkey primary key (email)
+);
+
+-- Create a function to search for documents
+create function match_documents (
+  query_embedding vector(768),
+  match_count int DEFAULT null,
+  filter jsonb DEFAULT '{}'
+) returns table (
+  id bigint,
+  content text,
+  metadata jsonb,
+  embedding jsonb,
+  similarity float
+)
+language plpgsql
+as $$
+#variable_conflict use_column
+begin
+  return query
+  select
+    id,
+    content,
+    metadata,
+    (embedding::text)::jsonb as embedding,
+    1 - (documents.embedding <=> query_embedding) as similarity
+  from documents
+  where metadata @> filter
+  order by documents.embedding <=> query_embedding
+  limit match_count;
+end;
+$$;
+```
 
 ## Deploy on Vercel
 
