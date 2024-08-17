@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useEffect } from "react";
 import { CircleDashed, FileUp } from "lucide-react";
 import { ErrorToast } from "@/client/components";

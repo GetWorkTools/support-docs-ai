@@ -1,3 +1,5 @@
+"use client"
+
 import React, { memo, useEffect, useCallback } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { GoogleLogin } from "../../components/login/google-login";

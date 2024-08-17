@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useCallback } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { default as NextImage } from "next/image";
