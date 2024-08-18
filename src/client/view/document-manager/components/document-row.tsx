@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useCallback, useEffect } from "react";
 import moment from "moment";
 import { CircleDashed, ExternalLink, FileText, Trash2 } from "lucide-react";

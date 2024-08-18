@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useState, useCallback } from "react";
 import { TextSearch } from "lucide-react";
 

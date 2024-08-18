@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useState, useEffect } from "react";
 import { CircleX } from "lucide-react";
 
