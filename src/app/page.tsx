@@ -1,11 +1,5 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { memo, useEffect } from "react";
-
-export default memo(function () {
-  useEffect(() => {
-    window.location.href = "/home";
-  });
-
-  return null;
-});
+export default function RedirectPage() {
+  return redirect('/home');
+};
