@@ -18,4 +18,3 @@ export { DocSearch };
 export { PoweredBy };
 export { ErrorMessage };
 export { ErrorToast };
-export { useAnalytics };

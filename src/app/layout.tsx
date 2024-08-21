@@ -1,10 +1,10 @@
-import React, { memo } from "react";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { cn } from "@/client/components/common/utils";
 import { PRODUCT_DESCRIPTION } from "@/client/components/common/constants";
 import { SessionProvider } from "@/client/components/common/providers/session-provider";
 import "./globals.css";
+import Analytics from "@/client/components/common/analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: PRODUCT_DESCRIPTION,
 };
 
-export default memo(function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -23,8 +23,9 @@ export default memo(function RootLayout({
       <body className={cn(inter.className, "leading-relaxed text-base")}>
         <SessionProvider>
           {children}
+          <Analytics />
         </SessionProvider>
       </body>
     </html>
   );
-});
+};

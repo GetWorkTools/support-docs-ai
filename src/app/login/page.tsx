@@ -1,11 +1,7 @@
-"use client";
-
-import React, { memo } from "react";
 import { LoginView } from "@/client";
-import { Header, useAnalytics } from "@/client/components";
+import { Header } from "@/client/components";
 
-export default memo(function () {
-  useAnalytics();
+export default function LoginPage() {
 
   return (
     <main className="bg-grid flex flex-col justify-center min-h-screen">
@@ -19,4 +15,4 @@ export default memo(function () {
       </div>
     </main>
   );
-});
+};
